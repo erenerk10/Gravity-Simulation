@@ -24,7 +24,7 @@ pip install -r requirements.txt
 Then run the simulation:
  
 ```bash
-python gravity.py
+python simulation.py
 ```
  
 ---
