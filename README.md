@@ -80,8 +80,8 @@ Gravity calculations use NumPy matrix operations instead of nested Python loops,
  
 ## TODO
  
-- [ ] Barnes-Hut algorithm for better performance at very high particle counts
+- [x] Barnes-Hut algorithm for better performance at very high particle counts
 - [ ] Gravitational wave visualization on black hole mergers
 - [ ] Save / load simulation state
 - [ ] Adjustable screen resolution
-- [ ] Particle color based on velocity
+- [x] Particle color based on velocity
