@@ -8,7 +8,7 @@ A 2D gravity simulation built with Python and Pygame. Particles interact via New
 - Velocity Verlet integration for stable orbits
 - Particle merging with momentum conservation
 - Black hole formation and event horizon absorption
-- Real-time control panel (G, softening, black hole mass threshold, time scale)
+- Real-time control panel (G, black hole mass threshold, time scale)
 - Galaxy orbit system with a single keypress
  
 ---
@@ -44,7 +44,6 @@ The panel in the bottom-left corner lets you adjust simulation parameters in rea
 | Slider | Description |
 |---|---|
 | G (Gravity) | Gravitational constant — higher values = stronger pull |
-| Softening | Prevents infinite force at very short distances |
 | BH Mass | Mass threshold at which a merged particle becomes a black hole |
 | Time Scale | Simulation speed multiplier |
  
@@ -65,7 +64,11 @@ When two particles overlap, they merge. The resulting particle inherits the comb
 Black holes exert a stronger gravitational pull than normal particles. Any particle that crosses the event horizon (determined by the Schwarzschild multiplier) is absorbed and removed from the simulation.
  
 ### Performance
-Gravity calculations use NumPy matrix operations instead of nested Python loops, reducing the complexity from O(n²) individual operations to a single vectorized pass — significantly faster at higher particle counts.
+
+The simulation originally used NumPy vectorized matrix operations for gravity calculations, which improved performance compared to nested Python loops but still had **O(n²)** time complexity.
+
+The current version uses the **Barnes–Hut algorithm** with a quadtree spatial partitioning system, reducing the complexity to approximately **O(n log n)**.
+This allows the simulation to handle significantly larger particle counts while maintaining real-time performance.
  
 ---
  
